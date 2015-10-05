@@ -1,3 +1,4 @@
+import java.lang.Math;
 /**
  * Diese Klasse präsentiert ein Polynom von einem beliebigen Grad mit
  * realen Koeffizienten.
@@ -16,7 +17,8 @@
  * bei {@literal 0}
  */
 public class Polynom {
-
+	
+	double[] poly;
     /*
      * Hilfe, ich bin werde auf der Mother Base gefangen gehalten
      * und muss hier den ganzen Tag Programme schreiben...
@@ -36,6 +38,7 @@ public class Polynom {
      * @param a Koeffizienten des Polynoms
      */
     public Polynom(double... a) {
+    	this.poly = a;
     }
 
     /**
@@ -43,6 +46,7 @@ public class Polynom {
      * 0 sind.
      */
     public Polynom() {
+    	new Polynom(0);
     }
 
     /**
@@ -52,7 +56,11 @@ public class Polynom {
      * @return Wert an der Stelle x
      */
     public double berechne(double x) {
-        return 0.0;
+        double sum = 0;
+    	for (int i = 0; i<this.poly.length; i++){
+    		sum += (poly[i])*(Math.pow(x,i));
+    	}
+    	return sum;
     }
 
     /**
@@ -62,7 +70,11 @@ public class Polynom {
      * @return Ergebnis
      */
     public double[] calc(double[] xs) {
-        return null;
+    	double[] sum = new double[xs.length];
+    	for (int i = 0; i < sum.length; i++) {
+			sum[i] = berechne(xs[i]);
+		}
+        return sum;
     }
 
     /**
@@ -71,7 +83,10 @@ public class Polynom {
      * @return Grad des Polynoms, -1 für das Nullpolynom
      */
     public int getGrad() {
-        return -1;    }
+    	if (this.poly.length != 0)
+    		return this.poly.length;
+        return -1;    
+    }
 
     /**
      * Liefert den n-ten Koeffizienten.
@@ -81,7 +96,7 @@ public class Polynom {
      *         Polynoms ist
      */
     public double getKoeffizient(int n) {
-        return 0;
+        return this.poly[n];
     }
 
     /**
@@ -90,7 +105,8 @@ public class Polynom {
      * @return die Koeffizienten.
      */
     public double[] getKoeffizienten() {
-        return null;
+        
+    	return this.poly;
     }
 
     /**
@@ -100,7 +116,20 @@ public class Polynom {
      * @return neues Polynom mit dem Ergebnis der Addition
      */
     public Polynom addiere(Polynom p) {
-        return null;
+    	
+    	Polynom x=new Polynom();
+    	int length;
+    	if (this.poly.length > p.poly.length){
+    		length = p.poly.length;
+    		x.poly = this.poly;
+    	} else {
+    		length = this.poly.length;
+    		x.poly = p.poly;
+    	}
+    	for (int i = 0; i < length; i++) {
+			x.poly[i]=this.poly[i]+p.poly[i];	
+    	}
+        return x;
     }
 
     /**
@@ -110,7 +139,19 @@ public class Polynom {
      * @return neues Polynom mit dem Ergebnis der Subtraktion
      */
     public Polynom subtrahiere(Polynom p) {
-        return null;
+    	Polynom x=new Polynom();
+    	int length;
+    	if (this.poly.length > p.poly.length){
+    		length = p.poly.length;
+    		x.poly = this.poly;
+    	} else {
+    		length = this.poly.length;
+    		x.poly = p.poly;
+    	}
+    	for (int i = 0; i < length; i++) {
+			x.poly[i]=this.poly[i]-p.poly[i];	
+    	}
+        return x;
     }
 
     /**
@@ -160,6 +201,7 @@ public class Polynom {
      */
     @Override
     public String toString() {
+    	
         return "";
     }
 }
