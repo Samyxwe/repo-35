@@ -201,7 +201,14 @@ public class Polynom {
      */
     @Override
     public String toString() {
-    	
-        return "";
+    	String polynom="";
+    	if(this.poly.length==0){
+    		return "0";
+    	}
+    	for (int i = 0; i < this.poly.length; i++) {
+    		polynom="" + poly[i] + "x^"+i;
+			
+		}
+        return polynom;
     }
 }
