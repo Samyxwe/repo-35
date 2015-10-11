@@ -46,6 +46,7 @@ public class Polynom {
      * 0 sind.
      */
     public Polynom() {
+    	this.poly=new double [0];
     	new Polynom(0);
     }
 
@@ -83,8 +84,14 @@ public class Polynom {
      * @return Grad des Polynoms, -1 für das Nullpolynom
      */
     public int getGrad() {
-    	if (this.poly.length != 0)
-    		return this.poly.length;
+    	if (this.poly.length != 0){
+    		int x=0;
+    		for (int i = 0; i < poly.length; i++) {
+				if(this.poly[i]!=0)
+				x=i;	
+			}
+    		return x;
+    	}	
         return -1;    
     }
 
@@ -160,7 +167,25 @@ public class Polynom {
      * @return Ergebnis der Ableitung
      */
     public Polynom differenziere() {
-        return null;
+    	
+    	Polynom ableitung=new Polynom();
+    	double [] a= new double[this.poly.length];
+    	
+    	ableitung.poly=new double[this.poly.length-1];
+    	
+    	for (int i = this.poly.length-1; i > 1 ; i--) {
+			
+    		a[i]=i*this.poly[i];
+    		
+		}
+    	
+    	for (int i = a.length-1; i >0; i--) {
+			
+    		ableitung.poly[i-1]=a[i];
+    		
+		}
+    	
+        return ableitung;
     }
 
     /**
@@ -169,7 +194,18 @@ public class Polynom {
      * @return Ergebnis der Integration.
      */
     public Polynom integriere() {
-        return null;
+    	
+    	Polynom stammfunktion=new Polynom();
+    	
+    	stammfunktion.poly = new double[this.poly.length+1];
+    	
+    	for (int i = this.poly.length-1; i >= 0; i--) {
+			
+    		stammfunktion.poly[i+1]=(this.poly[i]/(i+1));
+    		
+		}
+    	
+        return stammfunktion;
     }
 
     /**
@@ -201,14 +237,49 @@ public class Polynom {
      */
     @Override
     public String toString() {
-    	String polynom="";
+    	String polynom="Grad "+ (this.poly.length-1)+": ";
+    	
     	if(this.poly.length==0){
     		return "0";
     	}
-    	for (int i = 0; i < this.poly.length; i++) {
-    		polynom="" + poly[i] + "x^"+i;
-			
+    	
+    	polynom+="" + Math.round(this.poly[this.poly.length-1])+"x^"+(this.poly.length-1);
+    	
+    	for (int i = this.poly.length-2; i > 1; i--) {
+    		//polynom+="" ;
+			if(this.poly[i]!=0){
+				if(this.poly[i]<0){
+					polynom+=" - ";
+					this.poly[i]=this.poly[i]*(-1);
+				}else{
+					polynom+=" + ";
+				}
+				if(this.poly[i]-(int)(this.poly[i])!=0){
+					polynom+="" + this.poly[i]+"x^"+i;
+				}else{
+					polynom+="" + Math.round(this.poly[i])+"x^"+i;
+				}
+				
+			}
 		}
+    	
+    	if(this.poly[1]<0){
+			polynom+=" - ";
+			this.poly[1]=this.poly[1]*(-1);
+		}else{
+			polynom+=" + ";
+		}
+    	
+    	if(this.poly[1]-(int)(this.poly[1])==0){
+    	    polynom+=""+Math.round(this.poly[1])+"x";
+        }else{
+        	polynom+=""+this.poly[1];
+    	}
+    	if(this.poly[0]-(int)(this.poly[0])==0){
+    	    polynom+=" + "+Math.round(this.poly[0]);
+        }else{
+        	polynom+=" + "+this.poly[0];
+    	}
         return polynom;
     }
 }
