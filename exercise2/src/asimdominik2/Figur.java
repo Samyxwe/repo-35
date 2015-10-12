@@ -1,3 +1,8 @@
+/**
+ * Durch den Paketnamen asimdominik2 haben wir eine
+ * Kollision mit anderen Packages verhindert,
+ * da unsere Namen und die Aufagben Nummer im Paketnamen vorkommen.
+ */
 package asimdominik2;
 /**
  * 	Klasse Figur dient zum speichern der Fläche der
