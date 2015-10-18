@@ -9,13 +9,6 @@ package tpe_repo35_asim_dominik_aufgabe2_github;
 class Rechteck extends Figur{
 	
 	/**
-	 * Konstruktor wird benötigt, da die Klasse Quadrat von der Klasse Rechteck
-	 * abgeleitet wird. Dabei wird ein default-Konstruktor gebraucht.
-	*/
-	Rechteck(){
-		
-	}
-	/**
 	 * Konstruktor sorgt dafür, dass beim erstellen
 	 * einer Figur breite und hoehe sofort festgelegt werden
 	 * und die flaeche berechnet wird.
