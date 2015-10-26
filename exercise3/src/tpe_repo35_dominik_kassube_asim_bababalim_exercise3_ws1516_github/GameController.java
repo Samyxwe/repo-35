@@ -11,7 +11,7 @@ public class GameController {
 	}
 	
 	void runGame(){
-		
+		Squad spiel=new Squad(Spieler1,Spieler2);
 	}
 	
 	public static void main(String [] args){

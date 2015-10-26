@@ -120,6 +120,10 @@ public class Squad {
 		}
 	}
 	
+	Squad(Squad Spieler1,Squad Spieler2){
+		attack(Spieler1,Spieler2);
+	}
+	
 	public void attack(Squad verteidiger, Squad angreifer){
 		int zahl;
 		for (int i = 0; i < einheiten.length; i++) {
@@ -127,14 +131,17 @@ public class Squad {
 				do{
 					zahl =(int)Math.random()*27;
 				} while(!verteidiger.einheiten[zahl].isLebendig());
-						verteidiger.einheiten[zahl].hp-=angreifer.einheiten[i].attack();
+					System.out.println("Angriff1");
+					verteidiger.einheiten[zahl].hp-=angreifer.einheiten[i].attack();
 				}
 			if (verteidiger.einheiten[i] != null && verteidiger.einheiten[i].isLebendig()){
 				do{
 					zahl =(int)Math.random()*27;
 				}while(!angreifer.einheiten[zahl].isLebendig());
-						angreifer.einheiten[zahl].hp-=verteidiger.einheiten[i].attack();
+					System.out.println("Angriff");
+					angreifer.einheiten[zahl].hp-=verteidiger.einheiten[i].attack();
 			}	
 		}
+		
 	}
 }
