@@ -1,24 +1,46 @@
 package tpe_repo35_dominik_kassube_asim_bababalim_exercise3_ws1516_github;
 
+import java.util.Scanner;
+
 public class Squad {
 
+	Scanner in=new Scanner(System.in);
 	private double elfendollar=2000;
-	protected double lifepoints;
-	protected double strength;
-	protected double speed;
-	protected double ruestung;
-	Menschen [] a= new Menschen [7];
-	Untote [] beißer=new Untote [8];
+	String teamName;
+	Wesen[] einheiten = new Wesen[28];
+	boolean fertig=false;
+	int eingabe;
+	int zaehler=0;
+	Mensch mensch=new Mensch();
+	Untote untote=new Untote();
+	Ork ork=new Ork();
 	
 	Squad(){
-		for (int i = 0; i < a.length ; i++) {
-			a[i]=new Menschen();
-			elfendollar-=a[i].cost;
-		}
-		for (int i = 0; i < beißer.length && elfendollar>=150; i++) {
-			beißer[i]=new Untote();
-		}
 		
+		System.out.println("Teamnamen eingeben:");
+		teamName=in.nextLine();
+		
+		System.out.println("Shop:\n"
+							+ "1) Mensch: 110;   2) Erzmagier: 220\n"
+							+ "3) Ork: 150;      4) Farseer: 300\n"
+							+ "5) Nachtelf: 145; 6) Daemonenjaeger: 290\n"
+							+ "7) Untote: 70;    8) Lich: 140");
+		
+		while(elfendollar>69 & !fertig){
+			System.out.println("Geld: " + elfendollar);
+			eingabe=in.nextInt();
+			
+			if()
+			switch(eingabe){
+			case 1:	
+					einheiten[zaehler]= new Mensch();
+					
+					break;
+			
+			
+			}
+			zaehler++;
+		}
 	}
 	
 	public void attack(){

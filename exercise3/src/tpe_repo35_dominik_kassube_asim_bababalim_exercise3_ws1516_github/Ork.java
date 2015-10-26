@@ -1,28 +1,13 @@
 package tpe_repo35_dominik_kassube_asim_bababalim_exercise3_ws1516_github;
 
-public class Ork {
-	protected double cost = 150;
-	protected double hp = 100;
-	protected double damage = 33;
-	protected double speed = 1;
-	protected double armor = 30;
+public class Ork extends Wesen{
 	
-	public double getCost(){
-		 return cost;
-	 }
 	
-	public boolean isLebendig(){
-		if (this.hp <= 0){
-			return false;
-		}
-		return true;
+	Ork(){
+		super(100,33,1,0.3,150,1);
 	}
 	
-	public String toString() {
-		return "Ork [Lebenspunkte=" + hp + ", Schaden=" + damage + ", Geschwindigkeit=" + speed + ", Rüstung=" + armor + "]";
-	}
-	
-	public double attack(){
-		return this.damage*this.speed;
+	Ork(double bonus){
+		super(100,33,1,0.3,300,bonus);
 	}
 }
