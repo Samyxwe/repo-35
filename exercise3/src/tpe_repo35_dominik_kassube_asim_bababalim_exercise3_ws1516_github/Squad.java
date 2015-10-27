@@ -1,12 +1,15 @@
 package tpe_repo35_dominik_kassube_asim_bababalim_exercise3_ws1516_github;
 
 import java.util.*;
+import java.util.ArrayList;
 public class Squad {
 
 	Scanner in=new Scanner(System.in);
+	Wesen wesen;
+	ArrayList<Wesen> team=new ArrayList<Wesen>();
 	private double elfendollar=2000;
 	String teamName;
-	Wesen[] einheiten = new Wesen[28];
+	//Wesen[] einheiten = new Wesen[28];
 	boolean fertig=false;
 	int eingabe;
 	int zaehler=0;
@@ -43,7 +46,9 @@ public class Squad {
 				break;
 			case 1:
 				if (elfendollar - mensch.cost >= 0) {
-					einheiten[zaehler] = new Mensch();
+					//einheiten[zaehler] = new Mensch();
+					wesen=new Mensch();
+					team.add(wesen);
 					elfendollar -= mensch.cost;
 					zaehler++;
 				} else {
@@ -52,7 +57,9 @@ public class Squad {
 				break;
 			case 2:
 				if (elfendollar - erzmagier.cost >= 0) {
-					einheiten[zaehler] = new Erzmagier();
+					//einheiten[zaehler] = new Erzmagier();
+					wesen=new Erzmagier();
+					team.add(wesen);
 					elfendollar -= erzmagier.cost;
 					zaehler++;
 				} else {
@@ -61,7 +68,9 @@ public class Squad {
 				break;
 			case 3:
 				if (elfendollar - ork.cost >= 0) {
-					einheiten[zaehler] = new Ork();
+					//einheiten[zaehler] = new Ork();
+					wesen=new Ork();
+					team.add(wesen);
 					elfendollar -= ork.cost;
 					zaehler++;
 				} else {
@@ -70,7 +79,9 @@ public class Squad {
 				break;
 			case 4:
 				if (elfendollar - farseer.cost >= 0) {
-					einheiten[zaehler] = new Farseer();
+					//einheiten[zaehler] = new Farseer();
+					wesen=new Farseer();
+					team.add(wesen);
 					elfendollar -= farseer.cost;
 					zaehler++;
 				} else {
@@ -79,7 +90,9 @@ public class Squad {
 				break;
 			case 5:
 				if (elfendollar - nachtelf.cost >= 0) {
-					einheiten[zaehler] = new Nachtelf();
+					//einheiten[zaehler] = new Nachtelf();
+					wesen=new Nachtelf();
+					team.add(wesen);
 					elfendollar -= nachtelf.cost;
 					zaehler++;
 				} else {
@@ -88,7 +101,9 @@ public class Squad {
 				break;
 			case 6:
 				if (elfendollar - daemonenjaeger.cost >= 0) {
-					einheiten[zaehler] = new Daemonenjaeger();
+					//einheiten[zaehler] = new Daemonenjaeger();
+					wesen=new Daemonenjaeger();
+					team.add(wesen);
 					elfendollar -= daemonenjaeger.cost;
 					zaehler++;
 				} else {
@@ -97,7 +112,9 @@ public class Squad {
 				break;
 			case 7:
 				if (elfendollar - untote.cost >= 0) {
-					einheiten[zaehler] = new Untote();
+					//einheiten[zaehler] = new Untote();
+					wesen=new Untote();
+					team.add(wesen);
 					elfendollar -= untote.cost;
 					zaehler++;
 				} else {
@@ -106,14 +123,21 @@ public class Squad {
 				break;
 			case 8:
 				if (elfendollar - lich.cost >= 0) {
-					einheiten[zaehler] = new Lich();
+					//einheiten[zaehler] = new Lich();
+					wesen=new Lich();
+					team.add(wesen);
 					elfendollar -= lich.cost;
 					zaehler++;
 				} else {
 					System.out.println("Elfendollar reichen nicht aus für diese Rasse");
 				}
 				break;
-			default:
+			default: System.out.println("Shop:\n"
+					+ "1) Mensch: "+mensch.cost+";   2) Erzmagier: "+erzmagier.cost+"\n"
+					+ "3) Ork: "+ork.cost+";      4) Farseer: "+farseer.cost+"\n"
+					+ "5) Nachtelf: "+nachtelf.cost+"; 6) Daemonenjaeger: "+daemonenjaeger.cost+"\n"
+					+ "7) Untote: "+untote.cost+";    8) Lich: "+lich.cost);
+
 				break;
 			}
 			
@@ -121,27 +145,55 @@ public class Squad {
 	}
 	
 	Squad(Squad Spieler1,Squad Spieler2){
-		attack(Spieler1,Spieler2);
+		schlacht(Spieler1,Spieler2);
 	}
 	
-	public void attack(Squad verteidiger, Squad angreifer){
+	public void schlacht(Squad verteidiger, Squad angreifer){
 		int zahl;
-		for (int i = 0; i < einheiten.length; i++) {
-			if (angreifer.einheiten[i] != null && angreifer.einheiten[i].isLebendig()){
+		for (int i = 0; i < team.size(); i++) {
+			if (angreifer.team.get(i) != null && angreifer.team.get(i).isLebendig()){
 				do{
 					zahl =(int)Math.random()*27;
-				} while(!verteidiger.einheiten[zahl].isLebendig());
+				} while(!verteidiger.team.get(zahl).isLebendig());
 					System.out.println("Angriff1");
-					verteidiger.einheiten[zahl].hp-=angreifer.einheiten[i].attack();
+					verteidiger.team.get(zahl).hp-=angreifer.team.get(i).attack();
 				}
-			if (verteidiger.einheiten[i] != null && verteidiger.einheiten[i].isLebendig()){
+			if (verteidiger.team.get(i) != null && team.get(i).isLebendig()){
 				do{
 					zahl =(int)Math.random()*27;
-				}while(!angreifer.einheiten[zahl].isLebendig());
+				}while(!angreifer.team.get(zahl).isLebendig());
 					System.out.println("Angriff");
-					angreifer.einheiten[zahl].hp-=verteidiger.einheiten[i].attack();
+					angreifer.team.get(zahl).hp-=verteidiger.team.get(i).attack();
 			}	
+			
+			boolean rteil=urteil(verteidiger,angreifer);
+			if(rteil==false)
+			System.out.println("tot");
 		}
+		
+	}
+	
+	public boolean urteil(Squad Spieler1, Squad Spieler2){
+		
+		boolean ueberlebende = false;
+		
+		for (int j = 0; j < Spieler1.team.size(); j++) {
+			if(Spieler1.team.get(j).isLebendig()==true){
+				ueberlebende=false;
+			}else{
+				return true;
+			}
+		}
+		
+		for (int j = 0; j < Spieler2.team.size(); j++) {
+			if(Spieler2.team.get(j).isLebendig()==true){
+				ueberlebende=false;
+			}else{
+				return true;
+			}
+		}
+		
+		return ueberlebende;
 		
 	}
 }
