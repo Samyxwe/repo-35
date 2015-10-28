@@ -50,7 +50,6 @@ public class Squad {
 						team.add(wesen);
 						elfendollar -= wesen.cost;
 						einmal[0]=true;
-						System.out.println("45454");
 					} else {
 						// System.out.println("Elfendollar reichen nicht aus für
 						// diese Rasse");
@@ -75,7 +74,6 @@ public class Squad {
 						team.add(wesen);
 						elfendollar -= wesen.cost;
 						einmal[1]=true;
-						System.out.println("45454");
 					} else {
 						// System.out.println("Elfendollar reichen nicht aus für
 						// diese Rasse");
@@ -100,7 +98,6 @@ public class Squad {
 						team.add(wesen);
 						elfendollar -= wesen.cost;
 						einmal[2]=true;
-						System.out.println("45454");
 					} else {
 						// System.out.println("Elfendollar reichen nicht aus für
 						// diese Rasse");
@@ -124,7 +121,6 @@ public class Squad {
 						team.add(wesen);
 						elfendollar -= wesen.cost;
 						einmal[3]=true;
-						System.out.println("45454");
 					} else {
 						// System.out.println("Elfendollar reichen nicht aus für
 						// diese Rasse");
@@ -167,7 +163,7 @@ public class Squad {
 				
 				System.out.println("Angreifer: "+clan.team.get(i).typ+": "+ clan.team.get(i).toString(clan.team.get(i)));
 
-				allianz.team.get(zahl).hp -= clan.team.get(i).attack();
+				allianz.team.get(zahl).hp -= clan.team.get(i).attack()-clan.team.get(i).attack()*allianz.team.get(zahl).armor;
 			}
 			
 			if(existens(allianz)){
@@ -188,7 +184,7 @@ public class Squad {
 				
 				System.out.println("Angreifer: "+allianz.team.get(i).typ+": "+ allianz.team.get(i).toString(allianz.team.get(i)));
 				
-				clan.team.get(zahl).hp -= allianz.team.get(i).attack();
+				clan.team.get(zahl).hp -= allianz.team.get(i).attack()-allianz.team.get(i).attack()*clan.team.get(zahl).armor;
 			}
 			
 		} while (existens(allianz) && existens(clan));

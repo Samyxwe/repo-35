@@ -33,7 +33,7 @@ public class Wesen {
 	}
     
     public double attack(){
-		return (((damage*speed)*this.bonus)-((damage*speed)*this.bonus)*armor);
+		return ((damage*speed)*this.bonus);
 	}
 	
 }
