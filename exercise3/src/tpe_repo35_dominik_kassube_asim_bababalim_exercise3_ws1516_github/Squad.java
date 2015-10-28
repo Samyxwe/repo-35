@@ -11,16 +11,7 @@ public class Squad {
 	private double elfendollar = 2000;
 	String teamName;
 	boolean [] einmal=new boolean[4];
-	int eingabe;
-	int zaehler = 0;
-	Mensch mensch = new Mensch();
-	Untote untote = new Untote();
-	Ork ork = new Ork();
-	Nachtelf nachtelf = new Nachtelf();
-	Erzmagier erzmagier = new Erzmagier();
-	Farseer farseer = new Farseer();
-	Daemonenjaeger daemonenjaeger = new Daemonenjaeger();
-	Lich lich = new Lich();
+	int wahl;
 
 	Squad() {
 		erstelleSquad();
@@ -33,33 +24,31 @@ public class Squad {
 		
 		while (elfendollar > 69) {
 			// System.out.println("Geld: " + elfendollar);
-			eingabe = (int) Math.random() * 8 + 1;
+			wahl = (int)(Math.random() * 8 + 1);
 
-			switch (eingabe) {
+			switch (wahl) {
 			// case 0:
 			// fertig = true;
 			// break;
 			case 1:
-				if (elfendollar - mensch.cost >= 0) {
+				wesen = new Mensch();
+				if (elfendollar - wesen.cost >= 0) {
 					// einheiten[zaehler] = new Mensch();
-					wesen = new Mensch();
 					team.add(wesen);
-					elfendollar -= mensch.cost;
-					zaehler++;
+					elfendollar -= wesen.cost;
 				} else {
 					// System.out.println("Elfendollar reichen nicht aus für
 					// diese Rasse");
 				}
 				break;
 			case 2:
-				if(einmal[0]==false){
-					if (elfendollar - erzmagier.cost >= 0) {
+				wesen = new Erzmagier();
+				if(!AnfuehrerIstVorhanden(wesen) && team.contains(wesen)){
+					if (elfendollar - wesen.cost >= 0) {
 						// einheiten[zaehler] = new Erzmagier();
-						wesen = new Erzmagier();
 						team.add(wesen);
-						elfendollar -= erzmagier.cost;
-						zaehler++;
-						einmal[0]=true;
+						elfendollar -= wesen.cost;
+						System.out.println("45454");
 					} else {
 						// System.out.println("Elfendollar reichen nicht aus für
 						// diese Rasse");
@@ -67,26 +56,24 @@ public class Squad {
 				}
 				break;
 			case 3:
-				if (elfendollar - ork.cost >= 0) {
+				wesen = new Ork();
+				if (elfendollar - wesen.cost >= 0) {
 					// einheiten[zaehler] = new Ork();
-					wesen = new Ork();
 					team.add(wesen);
-					elfendollar -= ork.cost;
-					zaehler++;
+					elfendollar -= wesen.cost;
 				} else {
 					// System.out.println("Elfendollar reichen nicht aus für
 					// diese Rasse");
 				}
 				break;
 			case 4:
-				if(einmal[1]==false){
-					if (elfendollar - farseer.cost >= 0) {
+				wesen = new Farseer();
+				if(!AnfuehrerIstVorhanden(wesen) && team.contains(wesen)){
+					if (elfendollar - wesen.cost >= 0) {
 						// einheiten[zaehler] = new Farseer();
-						wesen = new Farseer();
 						team.add(wesen);
-						elfendollar -= farseer.cost;
-						zaehler++;
-						einmal[1]=true;
+						elfendollar -= wesen.cost;
+						System.out.println("45454");
 					} else {
 						// System.out.println("Elfendollar reichen nicht aus für
 						// diese Rasse");
@@ -94,26 +81,24 @@ public class Squad {
 				}
 				break;
 			case 5:
-				if (elfendollar - nachtelf.cost >= 0) {
+				wesen = new Nachtelf();
+				if (elfendollar - wesen.cost >= 0) {
 					// einheiten[zaehler] = new Nachtelf();
-					wesen = new Nachtelf();
 					team.add(wesen);
-					elfendollar -= nachtelf.cost;
-					zaehler++;
+					elfendollar -= wesen.cost;
 				} else {
 					// System.out.println("Elfendollar reichen nicht aus für
 					// diese Rasse");
 				}
 				break;
 			case 6:
-				if(einmal[2]==false){
-					if (elfendollar - daemonenjaeger.cost >= 0) {
+				wesen = new Daemonenjaeger();
+				if(!AnfuehrerIstVorhanden(wesen) && team.contains(wesen)){
+					if (elfendollar - wesen.cost >= 0) {
 						// einheiten[zaehler] = new Daemonenjaeger();
-						wesen = new Daemonenjaeger();
 						team.add(wesen);
-						elfendollar -= daemonenjaeger.cost;
-						zaehler++;
-						einmal[2]=true;
+						elfendollar -= wesen.cost;
+						System.out.println("45454");
 					} else {
 						// System.out.println("Elfendollar reichen nicht aus für
 						// diese Rasse");
@@ -121,26 +106,24 @@ public class Squad {
 				}
 				break;
 			case 7:
-				if (elfendollar - untote.cost >= 0) {
+				wesen = new Untote();
+				if (elfendollar - wesen.cost >= 0) {
 					// einheiten[zaehler] = new Untote();
-					wesen = new Untote();
 					team.add(wesen);
-					elfendollar -= untote.cost;
-					zaehler++;
+					elfendollar -= wesen.cost;
 				} else {
 					// System.out.println("Elfendollar reichen nicht aus für
 					// diese Rasse");
 				}
 				break;
 			case 8:
-				if(einmal[3]==false){
-					if (elfendollar - lich.cost >= 0) {
+				wesen = new Lich();
+				if(!AnfuehrerIstVorhanden(wesen) && team.contains(wesen)){
+					if (elfendollar - wesen.cost >= 0) {
 						// einheiten[zaehler] = new Lich();
-						wesen = new Lich();
 						team.add(wesen);
-						elfendollar -= lich.cost;
-						zaehler++;
-						einmal[3]=true;
+						elfendollar -= wesen.cost;
+						System.out.println("45454");
 					} else {
 						// System.out.println("Elfendollar reichen nicht aus für
 						// diese Rasse");
@@ -163,28 +146,35 @@ public class Squad {
 		int i;
 		do {
 
-		if(existens(clan)){
-			do {
-				zahl = (int) (Math.random() * allianz.team.size());
-			} while (!allianz.team.get(zahl).isLebendig() && existens(allianz));
+			if(existens(clan)){
+				do {
+					zahl = (int) (Math.random() * allianz.team.size());
+				} while (!allianz.team.get(zahl).isLebendig() && existens(allianz));
+				
+				System.out.println("Verteidiger: "+allianz.team.get(zahl).typ+": " +allianz.team.get(zahl).toString(allianz.team.get(zahl)));
+				
+				do {
+					i = (int) (Math.random() * clan.team.size());
+				} while (!clan.team.get(i).isLebendig() && existens(clan));
+				
+				System.out.println("Angreifer: "+clan.team.get(i).typ+": "+ clan.team.get(i).toString(clan.team.get(i)));
 
-			do {
-				i = (int) (Math.random() * clan.team.size());
-			} while (!clan.team.get(i).isLebendig() && existens(clan));
-
-			System.out.println("Angriff1");
-			allianz.team.get(zahl).hp -= clan.team.get(i).attack();
-		}
+				allianz.team.get(zahl).hp -= clan.team.get(i).attack();
+			}
+			
 			if(existens(allianz)){
 				do {
 					zahl = (int) (Math.random() * clan.team.size());
 				} while (!clan.team.get(zahl).isLebendig() && existens(clan));
+				
+				System.out.println("Verteidiger: "+clan.team.get(zahl).typ+": " +clan.team.get(zahl).toString(clan.team.get(zahl)));
 
 				do {
 					i = (int) (Math.random() * allianz.team.size());
 				} while (!allianz.team.get(i).isLebendig() && existens(allianz));
 
-				System.out.println("Angriff2");
+				System.out.println("Angreifer: "+allianz.team.get(i).typ+": "+ allianz.team.get(i).toString(allianz.team.get(i)));
+				
 				clan.team.get(zahl).hp -= allianz.team.get(i).attack();
 			}
 			
@@ -208,22 +198,13 @@ public class Squad {
 
 		return false;
 	}
-
-	/*
-	 * public boolean urteil(Squad Spieler1, Squad Spieler2){
-	 * 
-	 * boolean ueberlebende = false;
-	 * 
-	 * for (int j = 0; j < Spieler1.team.size(); j++) {
-	 * if(Spieler1.team.get(j).isLebendig()==true){ ueberlebende=false; }else{
-	 * return true; } }
-	 * 
-	 * for (int j = 0; j < Spieler2.team.size(); j++) {
-	 * if(Spieler2.team.get(j).isLebendig()==true){ ueberlebende=false; }else{
-	 * return true; } }
-	 * 
-	 * return ueberlebende;
-	 * 
-	 * }
-	 */
+	
+	 boolean AnfuehrerIstVorhanden(Wesen team) {
+	        if (team instanceof Anfuehrer) {
+	            return true;
+	        } else {
+	            return false;
+	        }
+	    
+	 }
 }

@@ -1,7 +1,7 @@
 package tpe_repo35_dominik_kassube_asim_bababalim_exercise3_ws1516_github;
 
-public class Erzmagier extends Mensch{
+public class Erzmagier extends Mensch implements Anfuehrer{
 	Erzmagier(){
-		super(1.5);
+		super(5,"Erzmagier");
 	}
 }

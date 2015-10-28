@@ -7,9 +7,10 @@ public class Wesen {
 	int speed;
     double armor;
     int cost;
+    String typ;
     protected double bonus = 1;
     
-    Wesen(double hp,int damage, int speed, double armor, int cost, double bonus){
+    Wesen(double hp,int damage, int speed, double armor, int cost, double bonus,String typ){
     
     	this.hp=hp;
     	this.damage=damage;
@@ -17,6 +18,7 @@ public class Wesen {
     	this.armor=armor;
     	this.cost=cost;
     	this.bonus=bonus;
+    	this.typ=typ;
     }
     
     public boolean isLebendig(){
@@ -26,8 +28,8 @@ public class Wesen {
 		return true;
 	}
     
-    public String toString() {
-		return "[Lebenspunkte=" + hp + ", Schaden=" + damage + ", Geschwindigkeit=" + speed + ", R�stung=" + armor + "]";
+    public String toString(Wesen a) {
+		return "[Lebenspunkte=" + a.hp + ", Schaden=" + a.damage + ", Geschwindigkeit=" + a.speed + ", Ruestung=" + a.armor + "]";
 	}
     
     public double attack(){

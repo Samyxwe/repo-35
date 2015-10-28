@@ -5,11 +5,11 @@ public class Mensch extends Wesen{
 	int cost=150;
 	
 	Mensch(){
-		super(150,40,2,0.4,110,1);
+		super(150,40,2,0.4,110,1,"Mensch");
 	}
 
-	Mensch(double bonus){
-		super(150,40,2,0.4,220,bonus);
+	Mensch(double bonus,String typ){
+		super(150,40,2,0.4,220,bonus,typ);
 	}
 
 }

@@ -1,7 +1,7 @@
 package tpe_repo35_dominik_kassube_asim_bababalim_exercise3_ws1516_github;
 
-public class Lich extends Untote{
+public class Lich extends Untote implements Anfuehrer{
 	Lich(){
-		super(2.3);
+		super(2.3,"Lich");
 	}
 }
